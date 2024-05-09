@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <p>
-        {position} {name}의 연봉은 {salary}억입니다
+        {position} {name}의 연봉은 {salary}억입니다 아시겠나요
       </p>
     </div>
   );
