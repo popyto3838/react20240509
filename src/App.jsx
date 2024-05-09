@@ -1,40 +1,40 @@
-//built-in component : html 의 기본 요소, 태그명 소문자로 시작
-//component : 직접만든 요소(태그), 대문
-
-//component 는 return을 가진 함수
-
-function Mycomponent() {
-  // return : 화면에 출력할 코드
-  return <div>hello component</div>;
+function MyComponent() {
+  // 최상위 컴포넌트 사용하지 않을 때 ->fragment <></> 사용
+  return (
+    <>
+      <p>Lorem ipsum dolor.</p>
+      <p>Aut mollitia, temporibus?</p>
+    </>
+  );
 }
 
 function MyComp() {
-  //jsx 코드 : <div></div>
+  // 최상위 컴포넌트는 1개임
+  return (
+    <div>
+      <p>Lorem ipsum.</p>
+      <p>Delectus, voluptatibus!</p>
+    </div>
+  );
 }
 
-function App() {
-  //한줄 주석
-  /*
-  여러줄 주석
-  */
-
-  //component 사용시 종료 태그 생략할 수 없음
-  //br 같은 빈 요소는 시작 태그에서 꼭 종료
-
+function MyTag() {
+  // jsx 코드 가 여러줄일때는 () 사용 div 안에 감싸기
   return (
-    <>
-      <div>
-        <h1>
-          hello
-          <br />
-          react
-        </h1>
-        <h1>하이 리액트</h1>
-        <h1>안녕 리액트</h1>
-        <p>lorem ipsum dolor.</p>
-        <Mycomponent />
-      </div>
-    </>
+    <div>
+      hello tag
+      <p>Lorem ipsum</p>
+      <p>Est,quos?</p>
+    </div>
+  );
+}
+function App() {
+  return (
+    <div>
+      <MyTag />
+      <MyComp />
+      <MyComponent />
+    </div>
   );
 }
 
