@@ -1,40 +1,35 @@
 function App() {
-  // const, let 중에 사용
-  const myTag = <h1>hello</h1>;
-  const val1 = "흥민";
-  const val2 = 3.14;
-  const val3 = 456;
-  const val4 = true;
-  const val5 = false;
-  const val6 = null;
-  const val7 = undefined;
-  const val8 = [2, 3];
-  const val9 = { age: 3, name: "강인" };
+  // {} 사용해서 javascript 코드 작성 가능
 
-  // {} : jsx 내에서 javascript 코드 사용
+  const v1 = 5;
+  const v2 = 7;
+
+  // 컴포넌트는대문자
+  function someAction() {
+    return "흥민";
+  }
+
+  function someAction2(p) {
+    return p * p;
+  }
 
   return (
     <>
       <p>
-        {val1} 선수는 연봉이{val3}억원 이다.
+        {2}+{3} ={2 + 3}
       </p>
-      <div>{val1}</div>
-      <div>{val2}</div>
-      <div>{val3}</div>
-      <div>{myTag}</div>
-      {/* boolean, null, undefined 은 출력 안됨 */}
-      <div>{val4}</div>
-      <div>{val5}</div>
-      <div>{val6}</div>
-      <div>{val7}</div>
-
-      <div>{val8}</div>
-
-      {/* 객체는 오류 */}
-      {/*<div>{val9}</div>*/}
-      {/* 프로퍼티에 접근해서 사용 */}
-      <div>{val9.name}</div>
-      <div>{val9.age}</div>
+      <p>
+        {v1}+{v2}={v1 + v2}
+      </p>
+      <p>
+        {v1}+{v2}={v1 - v2}
+      </p>
+      <p>
+        {v1} x{v2}={v1 * v2}
+      </p>
+      <p>{someAction()}</p>
+      <p>{someAction2(5)}</p>
+      <p>{v1 < 10 ? "작다" : "크다"}</p>
     </>
   );
 }
