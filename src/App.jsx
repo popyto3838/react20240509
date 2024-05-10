@@ -31,6 +31,30 @@ function App(props) {
   console.log("a.address.city", a.address.city); //busan
   console.log("c.address.city", c.address.city); //london
 
+  //연습 : 깊은복사
+
+  const d = {
+    company: {
+      name: "apple",
+      location: "us",
+    },
+    name: "iphone",
+    price: 300,
+  };
+
+  const { ...e } = d;
+
+  const { ...company1 } = d.company;
+  e.company = company1;
+
+  e.name = "galaxy";
+  e.company.name = "smasung";
+
+  console.log("d.name", d.name); // iphone
+  console.log("d.company.name", d.company.name); // apple
+  console.log("e.name", e.name); // galaxy
+  console.log("e.company.name", e.company.name); // samsung
+
   return <div></div>;
 }
 
