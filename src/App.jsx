@@ -1,26 +1,43 @@
 import React from "react";
 
 function App(props) {
-  //string
-  const s1 = "some string";
-  const s2 = "some string";
-  const s2 = "I'm 신뢰에요";
-  const s4 = '제 이름은 "흥민"입니다.';
+  function action1() {
+    console.log("이름있는함수");
+  }
 
-  // backtick
-  // template literal
-  const s5 = `another string`;
+  const a = function () {
+    console.log("이름 없는 함수");
+  };
 
-  const name = "son";
-  const age = 30;
-
-  const s6 = name + "is " + age + "years";
-  const s7 = `${name} is ${age * 2} years.`;
+  const b = () => {
+    console.log("arrow 변수에담아서넣기");
+  };
 
   return (
     <div>
-      <p>{s6}</p>
-      <p>{s7}</p>
+      <button onClick={action1}>
+        click1 onClick property에 이름 있는 함수 넣기
+      </button>
+      <button onClick={a}>
+        click2 onClick property에 이름 없는 함 수 변수에 담아서 넣기
+      </button>
+      <button
+        onClick={function () {
+          console.log("이름없는함수 바로넣기");
+        }}
+      >
+        click3 onClick property에 이름없는 함수 바로 넣기
+      </button>
+      <button onClick={b}>
+        click4 onClick property에 arrow function 변수에 담아서 넣기
+      </button>
+      <button
+        onClick={() => {
+          console.log("arrow 바로 넣기");
+        }}
+      >
+        click5 onClick property에 arrow function 바로넣기
+      </button>
     </div>
   );
 }
