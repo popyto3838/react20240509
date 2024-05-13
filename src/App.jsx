@@ -8,8 +8,10 @@ function App(props) {
 
   return (
     <div>
-      {index >0 && <button onClick={() => setIndex(index - 1)}>이전</indexbutton>
-      {index< foods.length -1 && (button onClick={() => setIndex(index + 1)}>다음</button>
+      {index > 0 && <button onClick={() => setIndex(index - 1)}>이전</button>}
+      {index < foods.length - 1 && (
+        <button onClick={() => setIndex(index + 1)}>다음</button>
+      )}
       <div>{food}</div>
     </div>
   );
