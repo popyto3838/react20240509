@@ -1,15 +1,45 @@
 import React, { useState } from "react";
 
-function App(props) {
-  const [val1, setVal1] = useState(0);
+function MyComp() {
+  const [val, setVal] = useState({ name: "son" });
 
-  let val2 = 0;
+  function updateVal() {
+    //상태가 바뀌면 다시 그림
+    //새 객체를만들어서 set
 
-  console.log("다시 호출됨");
+    val.name = "lee";
+    setVal(val);
+  }
+
   return (
     <div>
-      <button onClick={() => setVal1(val1 + 1)}>val1{val1} </button>
-      <button onClick={() => val2++}>val2 {val2}</button>
+      {val.name}
+      <button onClick={updateVal}>click</button>
+    </div>
+  );
+}
+
+function MyComp2() {
+  const [val, setVal] = useState({ name: "son" });
+  function updateVal() {
+    //객체를 복사해서 새 객체를 만들어 써야함
+    const { ...newVal } = val; //얕은복사
+    newval.name = "lee";
+    setVal(val);
+  }
+  return (
+    <div>
+      {val.name}
+      <button onClick={updateVal}>click</button>
+    </div>
+  );
+}
+
+function App(props) {
+  return (
+    <div>
+      <MyComp />
+      <MyComp2 />
     </div>
   );
 }
