@@ -1,45 +1,46 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-//step1 :컨텍스트 만들기
+function MyComp() {
+  // useEffect : 특정 순간에 실행되는 메소드를 파라미터로 받음
+  // 특정 순간 :
+  // 예)initial render(mount), re-render,
+  //   컴포넌트가 트리에서 떨어질 때(unmount), 어떤 state가 바뀔 때
 
-const TextContext = createContext(null);
+  // 첫번째 파라미터 : 실행되는 메소드
+  // 두번째 파라미터 : dependency (특정 순간)
 
-function MyInput({ onChange, text }) {
-  // step 2 : 컨텍스트 사용하기
-  const textHandler = useContext(TextContext);
+  // 두번째 파라미터가 없을 때
+  // rendering 될 때 마다 실행
+  useEffect(() => {
+    console.log("use effect의 함수 실행됨");
+  });
 
-  return;
-  <div>
-    <input
-      type="text"
-      onChange={(e) => textHandler.updateText(e.target.value)}
-    />
-    <p>{textHandler.text}</p>
-  </div>;
-}
+  // 두번째 파라미터에 빈 배열을 넣으면
+  // initial rendering 때만 실행
+  useEffect(() => {
+    console.log("첫 렌더링 때만 실행되는 메소드");
+  }, []);
 
-function MyText() {
-  const textHandler = useContext(TextContext);
+  const [count, setCount] = useState(0);
+
   return (
     <div>
-      <p>{textHandler.text}</p>
+      hello comp
+      <button onClick={() => setCount(count + 1)}>CLICK</button>
     </div>
   );
 }
 
 function App(props) {
-  const [text, setText] = useState();
-
-  function handleUpdateText(t) {
-    setText(t);
-  }
+  const [show, setShow] = useState(true);
   return (
     <div>
-      {/* step 3 : 컨텍스트 제공하기*/}
-      <TextContext.Provider value={{ text, updateText: handleUpdateText }}>
-        <MyInput />
-        <MyText />
-      </TextContext.Provider>
+      <input
+        type="checkbox"
+        checked={show}
+        onChange={(e) => setShow(e.target.checked)}
+      />
+      {show && <MyComp />}
     </div>
   );
 }
