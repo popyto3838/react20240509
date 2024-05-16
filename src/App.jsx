@@ -1,73 +1,27 @@
 import React from "react";
-import axios from "axios";
 
 function App(props) {
-  function handleClickButton1() {
-    // ajax get 요청
-    axios.get("/api/someurl");
-  }
+  // json
+  // javascript 객체 작성법을 빌린
+  // test형식의 데이터
 
-  function handleClickButton2() {
-    // ajax post 요청
-    axios.post("/api/someurl");
-  }
+  // json 데이터 타입
+  // 문자열, 수, 불리언, 객체, 배열 , null
 
-  function handleClickButton3() {
-    axios.get("/api/someurl2");
-  }
+  //json의 프로퍼티명은 큰따옴표 묶음
+  // 직렬화(stringify, encode) : 객체 -> JSON(문자열)
+  // 역직렬화(parse, decode) JSON(문자열) => 객체
 
-  function handleClickButton4() {
-    axios.post("/api/someurl2");
-  }
+  // 직렬화 예)
+  const obj1 = { name: "son", age: 33 };
+  const json1 = '{"name":"son", "age" :33}';
 
-  function handleClickButton5() {
-    const params = new URLSearchParams();
-    params.append("id", 3);
-    params.append("name", "son");
-    params.append("email", "son@gmail.com");
-    axios.get(`/api/someurl3?${params}`);
-  }
+  const obj2 = { name: "lee", age: 22 };
+  const json2 = JSON.stringify(obj2);
+  console.log("obj2", obj2);
+  console.log("json2", json2);
 
-  function handleClickButton6() {
-    const params = new URLSearchParams();
-    params.append("id", 5);
-    params.append("city", "서울");
-    params.append("country", "한국");
-    axios.post("/api/someurl3", params);
-  }
-
-  function handleClickButton7() {
-    const params = new URLSearchParams();
-    params.append("id", 4);
-    params.append("name", "slayer");
-    params.append("job", "soul");
-    axios.get(`/api/someurl4?${params}`);
-  }
-
-  function handleClickButton8() {
-    const params = new URLSearchParams();
-    params.append("id", 3);
-    params.append("name", "soul");
-    params.append("job", "slayer");
-    axios.get(`/api/someurl4?${params}`);
-  }
-
-  return (
-    <div>
-      <button onClick={handleClickButton1}>get 요청</button>
-      <button onClick={handleClickButton2}>post 요청</button>
-
-      {/* /api/someurl2*/}
-      <button onClick={handleClickButton3}>get 요청2</button>
-      <button onClick={handleClickButton4}>post 요청2</button>
-      {/* data도 함께 보내기*/}
-      <button onClick={handleClickButton5}>get요청 with query string</button>
-      <button onClick={handleClickButton6}>post 요청 with data</button>
-      {/* /api/someurl4 get/post with data*/}
-      <button onClick={handleClickButton7}>get요청 with query string</button>
-      <button onClick={handleClickButton8}>post요청 with query string</button>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
