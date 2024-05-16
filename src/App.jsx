@@ -28,6 +28,30 @@ function App(props) {
     axios.get(`/api/someurl3?${params}`);
   }
 
+  function handleClickButton6() {
+    const params = new URLSearchParams();
+    params.append("id", 5);
+    params.append("city", "서울");
+    params.append("country", "한국");
+    axios.post("/api/someurl3", params);
+  }
+
+  function handleClickButton7() {
+    const params = new URLSearchParams();
+    params.append("id", 4);
+    params.append("name", "slayer");
+    params.append("job", "soul");
+    axios.get(`/api/someurl4?${params}`);
+  }
+
+  function handleClickButton8() {
+    const params = new URLSearchParams();
+    params.append("id", 3);
+    params.append("name", "soul");
+    params.append("job", "slayer");
+    axios.get(`/api/someurl4?${params}`);
+  }
+
   return (
     <div>
       <button onClick={handleClickButton1}>get 요청</button>
@@ -36,8 +60,12 @@ function App(props) {
       {/* /api/someurl2*/}
       <button onClick={handleClickButton3}>get 요청2</button>
       <button onClick={handleClickButton4}>post 요청2</button>
-
+      {/* data도 함께 보내기*/}
       <button onClick={handleClickButton5}>get요청 with query string</button>
+      <button onClick={handleClickButton6}>post 요청 with data</button>
+      {/* /api/someurl4 get/post with data*/}
+      <button onClick={handleClickButton7}>get요청 with query string</button>
+      <button onClick={handleClickButton8}>post요청 with query string</button>
     </div>
   );
 }
